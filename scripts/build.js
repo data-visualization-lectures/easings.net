@@ -30,6 +30,8 @@ const langList = fs
 	.map((file) => yamlParse.load(file))
 	.filter((dic) => dic.version && dic.version > 1 && dic.lang_name);
 
+const DEFAULT_LANG_CODE = process.env.DEFAULT_LANG_CODE || "ja";
+
 const addedSelectors = [
 	"js-info-name",
 	"js-info-func",
@@ -157,7 +159,7 @@ async function build() {
 
 	serviceWorkerCode = (await Terser.minify(serviceWorkerCode)).code;
 
-	function htmlPlugin(lang = "en") {
+function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 		return (tree) => {
 			tree.match({ attrs: { class: true } }, (i) => ({
 				tag: i.tag,
@@ -253,11 +255,13 @@ async function build() {
 					);
 				});
 
-				const engLang = langList.find((lang) => lang.lang_code === "en");
+				const defaultLang =
+					langList.find((lang) => lang.lang_code === DEFAULT_LANG_CODE) ||
+					langList.find((lang) => lang.lang_code === "en");
 				const htmlFragment = Mustache.render(
 					html,
 					format(
-						engLang,
+						defaultLang,
 						langList.map((dic) => ({
 							code: dic.lang_code,
 							name: dic.lang_name,
