@@ -3,7 +3,8 @@ const path = require("path");
 const yamlParse = require("js-yaml");
 
 const Parcel = require("parcel-bundler");
-const app = require("express")();
+const express = require("express");
+const app = express();
 const Mustache = require("mustache");
 
 const format = require("./helpers/format");
@@ -26,6 +27,15 @@ const bundler = new Parcel("./src/*.pug", {
 	hmr: true,
 });
 
+const distDir = path.join(process.cwd(), "dist");
+const srcDir = path.join(process.cwd(), "src");
+
+app.get("/manifest.webmanifest", (req, res) => {
+	res.sendFile(path.join(srcDir, "manifest.webmanifest"));
+});
+
+app.use(express.static(distDir, { index: false }));
+
 app.use("/", renderIndexPage);
 app.use("/:lang", renderIndexPage);
 
@@ -34,7 +44,7 @@ app.listen(1234);
 
 function renderIndexPage(req, res, next) {
 	if (
-		req.originalUrl === "/" ||
+		req.path === "/" ||
 		(req.params.lang && req.params.lang.match(/^[a-zA-Z]{2}$/))
 	) {
 		const lang = req.params.lang;
