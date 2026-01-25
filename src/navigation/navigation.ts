@@ -141,6 +141,11 @@ function navigateChart(id: string): void {
 	if (name && func) {
 		const infoCurve = getElement(".info-chart__curve", info);
 		const itemCurve = getElement(".chart__curve", item);
+		const infoCurvePath = infoCurve ? getElement("path", infoCurve) : null;
+
+		if (!infoCurve || !itemCurve || !infoCurvePath) {
+			return;
+		}
 		const columnsTransitionTime = getTransitionTime(columns);
 
 		if (itemOffset === "top") {
@@ -167,10 +172,7 @@ function navigateChart(id: string): void {
 			hideGradient();
 		}
 
-		getElement("path", infoCurve).setAttribute(
-			"d",
-			itemCurve.getAttribute("d")
-		);
+		infoCurvePath.setAttribute("d", itemCurve.getAttribute("d"));
 
 		info.style.transitionTimingFunction = transitionTimingFunction;
 		info.style.display = "block";
