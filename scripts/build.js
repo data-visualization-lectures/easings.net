@@ -67,12 +67,16 @@ const bundler = new Parcel("./src/index.pug", {
 	sourceMaps: false,
 	scopeHoist: true,
 	publicUrl: "./",
+	minify: false,
+	production: false,
 });
 
 const errorBundler = new Parcel("./src/404.pug", {
 	sourceMaps: false,
 	scopeHoist: true,
 	publicUrl: "./",
+	minify: false,
+	production: false,
 });
 
 async function build() {
