@@ -25,9 +25,10 @@ const langList = fs
 const bundler = new Parcel("./src/*.pug", {
 	watch: true,
 	hmr: true,
+	outDir: "./docs",
 });
 
-const distDir = path.join(process.cwd(), "dist");
+const distDir = path.join(process.cwd(), "docs");
 const srcDir = path.join(process.cwd(), "src");
 
 app.get("/manifest.webmanifest", (req, res) => {

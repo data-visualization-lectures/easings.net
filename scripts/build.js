@@ -50,6 +50,8 @@ const htmlMinifyOptions = {
 	minifySvg: false,
 };
 
+const outputDir = "./docs";
+
 async function processHtml(html, plugin) {
 	try {
 		return await PostHTML([PostHTMLNano(htmlMinifyOptions)])
@@ -69,6 +71,7 @@ const bundler = new Parcel("./src/index.pug", {
 	publicUrl: "./",
 	minify: false,
 	production: false,
+	outDir: outputDir,
 });
 
 const errorBundler = new Parcel("./src/404.pug", {
@@ -77,6 +80,7 @@ const errorBundler = new Parcel("./src/404.pug", {
 	publicUrl: "./",
 	minify: false,
 	production: false,
+	outDir: outputDir,
 });
 
 async function build() {
@@ -136,7 +140,7 @@ async function build() {
 
 	await writeFile(keyframesFile.name, stylesKeyframe.css);
 
-	await copyFile("./src/favicon.ico", "./dist/favicon.ico");
+	await copyFile("./src/favicon.ico", `${outputDir}/favicon.ico`);
 
 	const styles = await PostCSS([cssPlugin, MQPacker]).process(cssData, {
 		from: cssFile.name,
