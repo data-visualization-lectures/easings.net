@@ -50,6 +50,17 @@ const htmlMinifyOptions = {
 	minifySvg: false,
 };
 
+async function processHtml(html, plugin) {
+	try {
+		return await PostHTML([PostHTMLNano(htmlMinifyOptions)])
+			.use(plugin)
+			.process(html);
+	} catch (error) {
+		console.warn("htmlnano failed, skipping minification.", error.message);
+		return PostHTML([]).use(plugin).process(html);
+	}
+}
+
 const shortCssClassName = generateCssClassName();
 
 const bundler = new Parcel("./src/index.pug", {
@@ -243,11 +254,10 @@ function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 						manifestLang
 					);
 
-					const htmlMinFragment = await PostHTML([
-						PostHTMLNano(htmlMinifyOptions),
-					])
-						.use(htmlPlugin(lang.lang_code))
-						.process(htmlFragment);
+					const htmlMinFragment = await processHtml(
+						htmlFragment,
+						htmlPlugin(lang.lang_code)
+					);
 
 					await writeFile(
 						path.join(distDirName, `${lang.lang_code}.html`),
@@ -269,11 +279,7 @@ function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 					)
 				);
 
-				const htmlMinFragment = await PostHTML([
-					PostHTMLNano(htmlMinifyOptions),
-				])
-					.use(htmlPlugin())
-					.process(htmlFragment);
+				const htmlMinFragment = await processHtml(htmlFragment, htmlPlugin());
 
 				await writeFile(item.name, htmlMinFragment.html.replace(/>\s</g, "><"));
 			} else {
