@@ -1,43 +1,32 @@
-# Easing Functions Cheat Sheet
+# easings.net
 
-Simple cheat sheet to help developers pick the right easing function.
+## 前提
+- Node.js 20 を使用（`.nvmrc` で 20 を指定済み）
+- Yarn 1.x
 
-<a href="https://evilmartians.com/?utm_source=easings.net">
-<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
-</a>
+## セットアップ
+```sh
+nvm use 20
+yarn install
+```
 
-## Contributing
+## ビルド
+```sh
+yarn run build
+```
+成果物は `dist/` に出力されます。
 
-GitHub has great instructions on how to [set up Git], [fork a project] and
-[make pull requests]. If you have a problem with Git, just send your files
-directly to <andrey@sitnik.ru>.
+## ローカル確認
+```sh
+yarn run start
+```
+ブラウザで `http://localhost:1234` を開きます。  
+認証デバッグは `http://localhost:1234/?auth_debug` です。  
+停止は `Ctrl+C` です。
 
-[set up Git]:         https://docs.github.com/en/github/getting-started-with-github/set-up-git
-[fork a project]:     https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
-[make pull requests]: https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests
-
-### Translate
-
-Just copy the `i18n/en.yml` file to `i18n/CODE.yml` (where `CODE` is
-the lowercased [RFC 3066] language code of your target language,
-for example `fr-ca` for Canadian French) and translate all messages.
-
-[RFC 3066]: http://www.i18nguy.com/unicode/language-identifiers.html
-
-### Test
-
-1. Install project dependencies:
-
-     ```sh
-    yarn install
-     ```
-
-2. That’s all. Run development server:
-
-     ```sh
-    yarn run start
-     ```
-
-3. And open [localhost:1234](https://localhost:1234) in browser.
-
-npm run build
+## トラブルシュート
+### deasync のバイナリが見つからない
+```sh
+xcode-select --install
+npm rebuild deasync --build-from-source
+```
