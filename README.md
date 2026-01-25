@@ -14,7 +14,7 @@ yarn install
 ```sh
 yarn run build
 ```
-成果物は `dist/` に出力されます。
+成果物は `docs/` に出力されます。
 
 ## ローカル確認
 ```sh
