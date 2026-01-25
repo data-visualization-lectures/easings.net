@@ -39,3 +39,5 @@ for example `fr-ca` for Canadian French) and translate all messages.
      ```
 
 3. And open [localhost:1234](https://localhost:1234) in browser.
+
+npm run build
