@@ -1,0 +1,1120 @@
+<!DOCTYPE html><html lang="ro" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>Easing Functions Cheat Sheet</title><meta content="Faceți animațiile mai realiste alegând funcția de relaxare potrivită." name="description"><meta name="theme-color" content="#1473e6"><link rel="manifest" href="manifest.ro.json"><link rel="icon" type="image/png" href="96.8aa68ac4.png"><link rel="mask-icon" href="mask.f6b15f2c.svg" color="#1473e6" sizes="any"><meta property="og:url" content="http://easings.net/"><meta property="og:image" content="https://easings.net/192.c6b79276.png"><meta property="og:description" content="Funcțiile de relaxare specifică viteza animației pentru a face mișcarea mai naturală. Obiectele reale nu se mișcă doar la o viteză constantă și nu pornesc sau se opresc instant. Această pagină vă ajută să alegeți funcția de relaxare potrivită."><style>:root {
+	--main-background: #f8f8f8;
+	--main-text-color: #222;
+
+	--second-background: #fff;
+	--second-background-transparent: rgba(255, 255, 255, 0);
+
+	--brand-color: #1473e6;
+	--brand-color-text: #fff;
+	--brand-darken-color: #095aba;
+	--brand-darken-color-text: #fff;
+	--brand-lighten-color: #2680eb;
+
+	--second-color: #247b5e;
+
+	--gray-color: #6e6e6e;
+	--gray-lighten-color: #cacaca;
+
+	--button-background-color: var(--brand-color);
+	--footer-link-color: var(--brand-darken-color);
+
+	--function-shadow: rgba(0, 0, 0, 0.05);
+	--function-shadow-active: rgba(0, 0, 0, 0.2);
+
+	--card-overlay: rgba(0, 0, 0, 0.7);
+	--card-overlay-text: #fff;
+
+	--transparent-color: rgba(0, 0, 0, 0);
+	--transparent-color-5: rgba(0, 0, 0, 0.05);
+	--transparent-color-20: rgba(0, 0, 0, 0.2);
+	--transparent-invert-color: rgba(255, 255, 255, 0);
+
+	--transition-time: 0.2s;
+	--transition-small-time: 0.1s;
+	--transition-card-time: 1s;
+	--transition-show-time: 1.5s;
+
+	--line-height: 1.4;
+	--line-height-code: 1.5;
+	--general-line-height: 22px;
+
+	--code-fonts: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+:root.is-dark {
+		--main-background: #222;
+		--main-text-color: #fff;
+
+		--second-background: rgb(17, 17, 17);
+		--second-background-transparent: rgba(17, 17, 17, 0);
+
+		--brand-color: #227dec;
+
+		--second-color: #298e6d;
+
+		--button-background-color: #136edd;
+		--footer-link-color: #4993ee;
+
+		--function-shadow: rgba(255, 255, 255, 0.05);
+		--function-shadow-active: rgba(255, 255, 255, 0.2);
+
+		--transparent-color: rgba(255, 255, 255, 0);
+		--transparent-color-5: rgba(255, 255, 255, 0.05);
+		--transparent-color-20: rgba(255, 255, 255, 0.2);
+		--transparent-invert-color: rgba(0, 0, 0, 0);
+	}
+html {
+	line-height: var(--line-height);
+	-webkit-text-size-adjust: 100%;
+	   -moz-text-size-adjust: 100%;
+	        text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+	font-size: 100%;
+	color: var(--main-text-color);
+}
+
+body {
+	line-height: var(--line-height);
+	position: relative;
+	box-sizing: border-box;
+	background: var(--main-background);
+	margin: 0;
+}
+
+a {
+	color: var(--brand-color);
+	text-decoration: none;
+	transition: var(--transition-time);
+	outline: none;
+	border-bottom: 1px solid;
+}
+
+	a:hover,
+	a:focus {
+		color: var(--brand-darken-color);
+	}
+
+	a:active {
+		color: var(--brand-color);
+		transition: none;
+	}
+
+	a.j {
+		box-shadow: 0 0 1px 4px var(--brand-color);
+	}
+
+	a.j {
+		box-shadow: 0 0 1px 4px var(--brand-color);
+	}
+
+pre {
+	font-family: var(--code-fonts);
+	margin: 0;
+	-moz-tab-size: 25px;
+	  -o-tab-size: 25px;
+	     tab-size: 25px;
+}
+.k {
+	color: var(--brand-color);
+}
+
+.l {
+	color: var(--second-color);
+}
+/*noinspection CssInvalidFunction,CssOverwrittenProperties*/
+.m {
+	overflow: hidden;
+	padding-top: constant(safe-area-inset-top, 0px);;
+	padding-top: env(safe-area-inset-top, 0px);;
+	padding-left: constant(safe-area-inset-left, 0px);;
+	padding-left: env(safe-area-inset-left, 0px);;
+	padding-right: constant(safe-area-inset-right, 0px);;
+	padding-right: env(safe-area-inset-right, 0px);;
+	padding-bottom: constant(safe-area-inset-bottom, 0px);;
+	padding-bottom: env(safe-area-inset-bottom, 0px);;
+}
+
+	.n,
+	.o {
+		position: absolute;
+		clip: rect(0 0 0 0);
+		width: 1px;
+		height: 1px;
+		margin: -0.0625rem;
+	}
+
+	.p {
+		position: relative;
+		box-sizing: border-box;
+		width: 100%;
+		margin: 0 auto;
+		max-width: 1050px;
+		padding: 0 0.9375rem;
+	}
+
+		.q {
+			position: relative;
+		}
+.r {
+	font-family: inherit;
+	font-size: 100%;
+	margin: 0;
+	border: none;
+	overflow: visible;
+	text-transform: none;
+	outline: none;
+	height: auto;
+	box-sizing: border-box;
+
+	position: relative;
+	background: var(--button-background-color);
+	color: var(--brand-color-text);
+	font-stretch: 100%;
+	font-weight: 500;
+	text-align: center;
+	text-decoration: none;
+	line-height: var(--line-height);
+	padding: 1em 1.25em;
+	display: inline-block;
+	border-radius: 0;
+	cursor: pointer;
+	transition: var(--transition-time);
+	box-shadow: 0 2px 8px var(--transparent-color-5);
+}
+
+	.r::after {
+		content: "";
+		position: absolute;
+		top: -4px;
+		right: -4px;
+		bottom: -4px;
+		left: -4px;
+		pointer-events: none;
+		box-shadow: 0 0 1px 4px var(--brand-color);
+		transition: var(--transition-time);
+		opacity: 0;
+	}
+
+	.r:hover {
+		background: var(--brand-darken-color);
+		color: var(--brand-darken-color-text);
+	}
+
+	.r:focus {
+		background: var(--brand-darken-color);
+		color: var(--brand-darken-color-text);
+	}
+
+	.r:active {
+		background: var(--brand-color);
+		transition: none;
+	}
+
+	.r.j {
+		box-shadow: none;
+	}
+
+	.r.j::after {
+		opacity: 1;
+	}
+
+
+.s {
+	font-size: 0.875rem;
+	padding: 0.75em 1em;
+}
+.t {
+	height: 1em;
+	vertical-align: middle;
+	transform: translateY(-10%);
+	display: inline-flex;
+	align-items: center;
+}
+
+	.u {
+		flex: 0 0 auto;
+		width: 24px;
+		height: 24px;
+		display: block;
+		fill: currentColor;
+	}
+
+			.v {
+				width: 16px;
+				height: 16px;
+			}
+.w {
+	padding: calc(var(--general-line-height) / 2) 0;
+	display: flex;
+	align-items: flex-start;
+}
+
+	.x {
+		width: 100%;
+		max-width: 900px;
+		padding: 0 calc(2 * var(--general-line-height)) 0 0;
+	}
+
+			[dir="rtl"] .x {
+				padding: 0 0 0 calc(2 * var(--general-line-height));
+			}
+
+		.x p {
+			margin: 0;
+			padding: 0 0 calc(var(--general-line-height) / 2);
+		}
+
+	.y {
+		flex: 0 0 auto;
+	}
+.z {
+	margin: 0 0 calc(var(--general-line-height) / 2);
+	position: relative;
+	text-align: center;
+	border: none;
+	text-decoration: none;
+}
+
+		._ {
+			background: var(--second-background);
+			padding: 0.625rem 0.9375rem;
+		}
+
+	.aa {
+		width: 1px;
+		min-width: 100%;
+		box-sizing: border-box;
+		padding: 0.3125rem 0 0;
+	}
+.ab {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0 auto;
+	max-width: 1050px;
+	padding: 1.25rem 0.9375rem 0.9375rem;
+}
+
+	.ac {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+		.ac::before {
+			content: "";
+			order: 1;
+			flex: 3 1 auto;
+		}
+
+		.ae {
+			order: 2;
+			margin: 0 auto 0.3125rem;
+			text-align: center;
+		}
+
+		.af {
+			order: -1;
+		}
+
+		.ag {
+			margin: 0 0 0.3125rem 1.25rem;
+		}
+
+				[dir="rtl"] .ag {
+					margin: 0 1.25rem 0.3125rem 0;
+				}
+
+			.ag select {
+				font-size: 0.85rem;
+			}
+
+			.ah {
+				color: var(--footer-link-color);
+			}
+.ai {
+	box-sizing: border-box;
+	padding: 0.25rem 0 0;
+	transition: var(--transition-time);
+}
+		.aj {
+			position: absolute;
+			left: 0;
+			right: 0;
+			opacity: 0;
+			visibility: hidden;
+		}
+
+	.ak {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: center;
+		margin: 0 -0.9375rem;
+	}
+
+		.al {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
+			justify-content: center;
+			width: calc(50% - var(--general-line-height));
+			box-sizing: border-box;
+			margin: 0 calc(var(--general-line-height) / 2) var(--general-line-height);
+		}
+.am {
+	opacity: 0;
+	visibility: hidden;
+	transition: var(--transition-time);
+	display: none;
+	position: relative;
+	z-index: 2;
+	margin: 0 0 var(--general-line-height);
+}
+
+		.an {
+			opacity: 1;
+			visibility: visible;
+		}
+
+	.ao {
+		margin: 0 0 var(--general-line-height);
+	}
+
+		.ap {}
+
+				[dir="rtl"] .ap {
+					transform: scaleX(-1);
+				}
+
+	.aq {
+		display: flex;
+		align-items: flex-start;
+	}
+
+		.ar {
+			box-sizing: border-box;
+			padding: 0 0 0 1.25rem;
+			width: 100%;
+			flex: 0 1 370px;
+		}
+
+				[dir="rtl"] .ar {
+					padding: 0 1.25rem 0 0;
+				}
+
+		.as {
+			flex: 1 1 auto;
+			width: 1px;
+			min-width: 60%;
+			max-width: 800px;
+			box-sizing: border-box;
+			margin-top: -1rem;
+		}
+
+			.at {
+				font-size: 2.625rem;
+				font-weight: 500;
+				line-height: calc(2 * var(--general-line-height));
+				margin: 0;
+				padding: 0 0 0.25em;
+			}
+.au {
+	position: relative;
+	width: 100%;
+	padding: var(--general-line-height) 0 var(--general-line-height) 0.0625rem;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+}
+
+		.av {
+			padding-top: calc(2 * var(--general-line-height));
+		}
+
+	.aw {
+		position: relative;
+		color: var(--gray-lighten-color);
+		max-width: 150px;
+	}
+
+		.aw::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: -1px;
+			left: -1px;
+			border-left: 1px solid currentColor;
+			border-bottom: 1px solid currentColor;
+		}
+
+
+		.ax {
+			fill: none;
+			stroke: var(--brand-color);
+			stroke-width: 1px;
+			stroke-linecap: round;
+			overflow: visible;
+			display: block;
+		}
+
+		.ay {
+			font-size: 0.875rem;
+			position: absolute;
+			top: 1px;
+			left: 5px;
+		}
+
+				.az {
+					top: auto;
+					left: auto;
+					right: 8px;
+					bottom: 4px;
+				}
+
+		.a0 {
+			display: block;
+			border: none;
+			background: none;
+			outline: none;
+			width: 100%;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+		}
+
+		.a1 {
+			position: absolute;
+			top: 100%;
+			right: -17px;
+			opacity: 0;
+			will-change: top;
+			transition: top 0s, opacity 0s;
+			transition-delay: 0s, 0s;
+			transform: translateY(-5px);
+		}
+
+				.a2 {
+					opacity: 1;
+					top: 1%;
+					transition: top var(--transition-card-time), opacity var(--transition-time);
+					transition-delay: var(--transition-time), 0s;
+				}
+
+			.a1::after {
+				content: '';
+				display: block;
+				width: 10px;
+				height: 10px;
+				border-radius: 0 50% 50% 50%;
+				background: var(--brand-color);
+				transform: rotate(-45deg);
+			}
+.a3 {
+	width: calc(100%/3 - 10px);
+	max-width: 160px;
+	box-sizing: border-box;
+	padding: 0.9375rem 0.9375rem 0.5rem;
+	margin: 0 0.3125rem 0.625rem;
+	transition: var(--transition-time);
+	position: relative;
+	outline: none;
+	display: flex;
+	flex-direction: column;
+	background: var(--second-background);
+	box-shadow: 0 2px 8px var(--function-shadow);
+}
+
+	.a3::after {
+		content: '';
+		position: absolute;
+		top: -4px;
+		right: -4px;
+		bottom: -4px;
+		left: -4px;
+		pointer-events: none;
+		box-shadow: 0 0 1px 4px var(--brand-color);
+		transition: var(--transition-time);
+		opacity: 0;
+	}
+
+		.a3:active {
+			box-shadow: 0 2px 8px var(--function-shadow);
+			transition: none;
+		}
+
+		.a3.j::after,
+		.a4::after {
+			opacity: 1;
+		}
+
+		.a5 {
+			z-index: 1;
+			box-shadow: 0 2px 8px var(--function-shadow-active);
+		}
+
+	.a6 {
+		margin: 0 auto;
+		outline: none;
+		position: relative;
+		width: 100%;
+		transition: none;
+		border: none;
+	}
+
+		.a6::after {
+			display: none;
+		}
+
+		.a6:active {
+			transform: none;
+			transition: none;
+		}
+
+
+	.a7 {
+		padding: 0.75em 0 0;
+		font-size: 1rem;
+		text-align: center;
+		transition: var(--transition-time);
+		margin: auto 0 0;
+		position: relative;
+		z-index: 1;
+	}
+.a8 {
+	padding-left: 25px;
+	-moz-tab-size: 25px;
+	  -o-tab-size: 25px;
+	     tab-size: 25px;
+	display: inline-block;
+}
+.a9 {
+	display: flex;
+	max-width: 107px;
+	text-decoration: none;
+	height: 100%;
+	min-height: 70px;
+}
+
+		.a9:focus {
+			box-shadow: none;
+		}
+
+	.a- {
+		position: relative;
+	}
+
+			.a_ {
+				height: 55px;
+				margin-top: auto;
+			}
+
+			.ba {
+				height: 55px;
+			}
+
+		.bb {
+			width: 100%;
+			min-width: 50px;
+			height: 100%;
+			overflow: visible;
+			display: block;
+			margin: 0 auto;
+		}
+
+			.bc {
+				opacity: 0;
+				transition: var(--transition-time);
+			}
+
+					.be .bc {
+						opacity: 1;
+					}
+
+				.bf {
+					fill: none;
+					stroke-width: 1px;
+					stroke: var(--gray-lighten-color);
+				}
+
+				.bg {
+					fill: var(--gray-lighten-color);
+					font-size: 0.625rem;
+				}
+
+
+			.bh {
+				fill: none;
+				stroke-width: 3px;
+				stroke-linecap: round;
+				transition: var(--transition-time);
+				transform: translate(1px, -1px);
+			}
+
+					.a_ .bh,
+					.ba .bh {
+						stroke-width: 4px;
+					}
+
+		.bi {
+			position: absolute;
+			top: 100%;
+			right: -17px;
+			opacity: 0;
+			will-change: top;
+			transition: top 0s, color 0s, opacity 0s;
+			transition-delay: 0s, 0s, 0s;
+			transform: translateY(-7px);
+			color: var(--brand-color);
+		}
+
+				.bj {
+					color: var(--main-text-color);
+				}
+
+				.bk,
+				.bl {
+					color: var(--brand-color);
+				}
+
+			.bi::after {
+				content: '';
+				display: block;
+				width: 10px;
+				height: 10px;
+				border-radius: 0 50% 50% 50%;
+				background: currentColor;
+				transform: rotate(-45deg);
+			}
+
+				.be .bi {
+					opacity: 1;
+					top: 1%;
+					transition: top var(--transition-show-time),  color var(--transition-show-time), opacity var(--transition-time);
+					transition-delay: var(--transition-time), var(--transition-time), 0s;
+				}
+
+					.be .bj,
+					.be .bl {
+						color: var(--second-color);
+					}
+
+					.be .bk {
+						color: var(--main-text-color);
+					}
+.bm {
+	font-size: 1rem;
+}
+
+		.bm + .bm {
+			padding: var(--general-line-height) 0 0;
+		}
+
+	.bn {
+		font-size: 1.625rem;
+		font-weight: 500;
+		line-height: calc(2 * var(--general-line-height));
+		margin: 0;
+		padding: 0;
+	}
+
+	.bo {
+		padding: calc(var(--general-line-height) / 2) 0;
+		margin: -0.125rem 0;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		direction: ltr;
+
+		word-wrap: break-word;
+		font-family: var(--code-fonts);
+		font-size: 0.8125rem;
+		line-height: var(--line-height-code);
+	}
+		
+		.bp {
+			max-width: 100%;
+			width: 300px;
+			height: 200px;
+			display: none;
+			margin: 0 0 calc(var(--general-line-height) / 2) 0;
+		}
+.bq {
+	position: relative;
+}
+
+	.br {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 2;
+		opacity: 0;
+		visibility: hidden;
+		transition: var(--transition-time);
+	}
+
+		.bq:hover .br {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.bs {
+			display: block;
+			width: 15px;
+			height: 15px;
+			fill: currentColor;
+			transition: opacity var(--transition-small-time);
+		}
+
+			.h {}
+
+			.bt {
+				position: absolute;
+				width: 16px;
+				height: 16px;
+				top: calc(50% - 8px);
+				left: calc(50% - 8px);
+			}
+
+			.bu {
+				opacity: 0;
+			}
+
+	.bv {
+		display: block;
+	}
+.bw {}
+
+	.bx {
+		font-size: 1.375rem;
+		line-height: calc(var(--line-height) - 0.2);
+		margin: 0;
+		padding: 0;
+	}
+
+	.by {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		margin: 0 calc(-0.25 * var(--general-line-height));
+		transition: 0.5s;
+	}
+
+		.bz {
+			margin: calc(var(--general-line-height) / 2) calc(var(--general-line-height) / 4) 0;
+		}
+
+	.b0 {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 calc(-0.5 * var(--general-line-height));
+	}
+.b1 {
+	padding: calc(1.5 * var(--general-line-height)) calc(var(--general-line-height) / 2) 0;
+	min-width: 200px;
+	box-sizing: border-box;
+	flex: 1 1 auto;
+}
+
+	.b2 {
+		padding: 0 0 calc(var(--general-line-height) / 2);
+	}
+.b3 {
+	position: relative;
+	overflow: hidden;
+}
+
+	.b4 {
+		width: 100%;
+		display: block;
+	}
+
+	.b5 {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+		background: var(--card-overlay);
+		color: var(--card-overlay-text);
+		box-sizing: border-box;
+		padding: 0.625rem 0.9375rem;
+
+		transition: var(--transition-card-time) linear;
+	}
+
+			.b6 {
+				transition: none;
+			}
+
+			.b7 {
+				opacity: 0;
+			}
+
+			.b8 {
+				transform: scale(0);
+			}
+
+			.b9 {
+				transform: translateX(-100%);
+			}
+.b- {
+	margin: calc(var(--general-line-height) / 2) 0 0;
+}
+
+	.b_ {
+		outline: none;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		        user-select: none;
+		cursor: pointer;
+		position: relative;
+	}
+
+		.b_::after {
+			content: '';
+			position: absolute;
+			top: -4px;
+			right: -4px;
+			bottom: -4px;
+			left: -4px;
+			pointer-events: none;
+			box-shadow: 0 0 1px 4px var(--brand-color);
+			transition: var(--transition-time);
+			opacity: 0;
+		}
+
+		.b_.j::after {
+			opacity: 1;
+		}
+
+	.ca {
+		margin: calc(var(--general-line-height) / 2) 0 var(--general-line-height);
+	}
+
+		.cb {
+			outline: none;
+			width: 100%;
+			max-height: 250px;
+			display: block;
+			box-sizing: border-box;
+			padding: 0 var(--general-line-height);
+			transition: var(--transition-time);
+
+			direction: ltr;
+			white-space: pre;
+			word-wrap: break-word;
+			font-family: var(--code-fonts);
+			font-size: 0.8125rem;
+			line-height: var(--line-height-code);
+			-moz-tab-size : 25px;
+			  -o-tab-size : 25px;
+			     tab-size : 25px;
+
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+			border: 1px solid var(--gray-color);
+
+			position: relative;
+			z-index: 1;
+			background-color: var(--second-background);
+			background-repeat: no-repeat;
+			background-image: radial-gradient(farthest-side at 50% 0, var(--transparent-color-20), var(--transparent-color)),
+				radial-gradient(farthest-side at 50% 100%, var(--transparent-color-20), var(--transparent-color));
+			background-position: 0 0, 0 100%;
+			background-size: 100% 10px;
+		}
+
+			.cb::before,
+			.cb::after {
+				content: "";
+				position: relative;
+				z-index: -1;
+				display: block;
+
+				margin: 0 0 -0.9375rem;
+				height: 30px;
+				background: linear-gradient(to bottom, var(--second-background), var(--second-background) 30%, var(--second-background-transparent));
+			}
+
+			.cb::after {
+				margin: -0.9375rem 0 0;
+				background: linear-gradient(to bottom, var(--second-background-transparent), var(--second-background) 70%, var(--second-background));
+			}
+.cc {
+	position: absolute;
+	z-index: 1;
+	background: var(--second-background);
+	will-change: width, height, top, left;
+	transform: translateZ(0);
+	box-shadow: 0 2px 8px var(--transparent-color-5);
+}
+@media (prefers-color-scheme: dark) {
+	:root:not(.is-light) {
+		--main-background: #222;
+		--main-text-color: #fff;
+
+		--second-background: rgb(17, 17, 17);
+		--second-background-transparent: rgba(17, 17, 17, 0);
+
+		--brand-color: #227dec;
+
+		--second-color: #298e6d;
+
+		--button-background-color: #136edd;
+		--footer-link-color: #4993ee;
+
+		--function-shadow: rgba(255, 255, 255, 0.05);
+		--function-shadow-active: rgba(255, 255, 255, 0.2);
+
+		--transparent-color: rgba(255, 255, 255, 0);
+		--transparent-color-5: rgba(255, 255, 255, 0.05);
+		--transparent-color-20: rgba(255, 255, 255, 0.2);
+		--transparent-invert-color: rgba(0, 0, 0, 0);
+	}
+}
+@media (max-width: 56.25rem) {
+	.x.x {
+		padding: 0;
+	}
+
+	.y {
+		display: none;
+	}
+	.al {
+		width: 100%;
+		text-align: center;
+	}
+}
+@media (max-width: 34.375rem) {
+	.ak {
+		margin: 0 -0.3125rem;
+	}
+
+	.al {
+		margin: 0 0 1.875rem;
+	}
+	.at {
+		font-size: 1.875rem;
+	}
+	.a9 {
+		width: 100px;
+	}
+	.bn {
+		font-weight: 400;
+		font-size: 1.375rem;
+	}
+}
+@media (max-width: 50rem) {
+	.aq {
+		margin: 0;
+		display: block;
+	}
+
+		.ar {
+			padding: 0;
+			width: 100%;
+		}
+
+		.as {
+			padding: 0 0 calc(2 * var(--general-line-height));
+			width: 100%;
+		}
+}
+@media (max-width: 65.625rem) {
+	.a3 {
+		min-width: 140px;
+	}
+
+	.a7 {
+		font-size: 0.875rem;
+	}
+}
+@media (max-width: 28.125rem) {
+	.a3 {
+		width: auto;
+	}
+}
+
+</style></head><body><div class="m"><svg class="n" xmlns="http://www.w3.org/2000/svg" width="0" height="0"><defs><symbol id="copy" viewBox="0 0 561 561"><path d="M395 0H89C61 0 38 23 38 51v357h51V51h306V0zm77 102H191c-28 0-51 23-51 51v357c0 28 23 51 51 51h281c28 0 51-23 51-51V153c0-28-23-51-51-51zm0 408H191V153h281v357z"></path></symbol><symbol id="done" viewBox="0 0 512 512"><path d="M437 75a254 254 0 00-362 0 254 254 0 000 362 254 254 0 00362 0 254 254 0 000-362zM256 482a226 226 0 111-453 226 226 0 01-1 453zM378 174c-6-6-15-6-21 0L225 306l-70-69a15 15 0 00-21 21l80 80a15 15 0 0021 0l143-143c6-6 6-15 0-21z"></path></symbol><linearGradient id="in" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--main-text-color)"></stop><stop offset="50%" stop-color="var(--main-text-color)"></stop><stop offset="70%" stop-color="var(--second-color)"></stop><stop offset="100%" stop-color="var(--second-color)"></stop></linearGradient><linearGradient id="out" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--brand-color)"></stop><stop offset="30%" stop-color="var(--brand-color)"></stop><stop offset="50%" stop-color="var(--main-text-color)"></stop><stop offset="100%" stop-color="var(--main-text-color)"></stop></linearGradient><linearGradient id="inOut" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--brand-color)"></stop><stop offset="20%" stop-color="var(--brand-color)"></stop><stop offset="80%" stop-color="var(--second-color)"></stop><stop offset="100%" stop-color="var(--second-color)"></stop></linearGradient></defs></svg><h1 class="o">Easing Functions Cheat Sheet</h1><div class="p"><div class="w"><div class="x"><p><strong>Funcțiile de relaxare</strong> specifică rata de modificare a unui parametru în timp.</p><p>Obiectele din viața reală nu pornesc sau se opresc instantaneu și aproape niciodată nu se deplasează cu viteză constantă. Când deschidem un sertar, mai întâi îl mișcăm rapid, și îl încetinim pe măsură ce iese. Aruncă ceva pe podea și mai întâi va accelera în jos, apoi revenind în sus după ce a lovit podeaua.</p><p>Această pagină vă ajută să alegeți funcția de relaxare potrivită.</p></div></div><div class="q"><div class="ai"><div class="ak"><div class="al"><div class="a3" id="func-easeInSine" data-name="easeInSine" data-func="cubic-bezier(0.12, 0, 0.39, 0)" data-maths="  return 1 - Math.cos((x * Math.PI) / 2);"><a class="a6 a9" href="#easeInSine"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C15.000 85.000 48.750 85.000 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.12,0,.39,0)"></div></div></a><div class="a7">easeInSine</div></div><div class="a3" id="func-easeOutSine" data-name="easeOutSine" data-func="cubic-bezier(0.61, 1, 0.88, 1)" data-maths="  return Math.sin((x * Math.PI) / 2);"><a class="a6 a9" href="#easeOutSine"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C76.250 0.000 110.000 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(.61,1,.88,1)"></div></div></a><div class="a7">easeOutSine</div></div><div class="a3" id="func-easeInOutSine" data-name="easeInOutSine" data-func="cubic-bezier(0.37, 0, 0.63, 1)" data-maths="return -(Math.cos(Math.PI * x) - 1) / 2;"><a class="a6 a9" href="#easeInOutSine"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C46.250 85.000 78.750 0.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.37,0,.63,1)"></div></div></a><div class="a7">easeInOutSine</div></div></div><div class="al"><div class="a3" id="func-easeInQuad" data-name="easeInQuad" data-func="cubic-bezier(0.11, 0, 0.5, 0)" data-maths="return x * x;"><a class="a6 a9" href="#easeInQuad"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C13.750 85.000 62.500 85.000 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.11,0,.5,0)"></div></div></a><div class="a7">easeInQuad</div></div><div class="a3" id="func-easeOutQuad" data-name="easeOutQuad" data-func="cubic-bezier(0.5, 1, 0.89, 1)" data-maths="return 1 - (1 - x) * (1 - x);"><a class="a6 a9" href="#easeOutQuad"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C62.500 0.000 111.250 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(.5,1,.89,1)"></div></div></a><div class="a7">easeOutQuad</div></div><div class="a3" id="func-easeInOutQuad" data-name="easeInOutQuad" data-func="cubic-bezier(0.45, 0, 0.55, 1)" data-maths="return x &lt; 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;"><a class="a6 a9" href="#easeInOutQuad"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C56.250 85.000 68.750 0.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.45,0,.55,1)"></div></div></a><div class="a7">easeInOutQuad</div></div></div><div class="al"><div class="a3" id="func-easeInCubic" data-name="easeInCubic" data-func="cubic-bezier(0.32, 0, 0.67, 0)" data-maths="return x * x * x;"><a class="a6 a9" href="#easeInCubic"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C40.000 85.000 83.750 85.000 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.32,0,.67,0)"></div></div></a><div class="a7">easeInCubic</div></div><div class="a3" id="func-easeOutCubic" data-name="easeOutCubic" data-func="cubic-bezier(0.33, 1, 0.68, 1)" data-maths="return 1 - Math.pow(1 - x, 3);"><a class="a6 a9" href="#easeOutCubic"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C41.250 0.000 85.000 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(.33,1,.68,1)"></div></div></a><div class="a7">easeOutCubic</div></div><div class="a3" id="func-easeInOutCubic" data-name="easeInOutCubic" data-func="cubic-bezier(0.65, 0, 0.35, 1)" data-maths="return x &lt; 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;"><a class="a6 a9" href="#easeInOutCubic"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C81.250 85.000 43.750 0.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.65,0,.35,1)"></div></div></a><div class="a7">easeInOutCubic</div></div></div><div class="al"><div class="a3" id="func-easeInQuart" data-name="easeInQuart" data-func="cubic-bezier(0.5, 0, 0.75, 0)" data-maths="return x * x * x * x;"><a class="a6 a9" href="#easeInQuart"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C62.500 85.000 93.750 85.000 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.5,0,.75,0)"></div></div></a><div class="a7">easeInQuart</div></div><div class="a3" id="func-easeOutQuart" data-name="easeOutQuart" data-func="cubic-bezier(0.25, 1, 0.5, 1)" data-maths="return 1 - Math.pow(1 - x, 4);"><a class="a6 a9" href="#easeOutQuart"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C31.250 0.000 62.500 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(.25,1,.5,1)"></div></div></a><div class="a7">easeOutQuart</div></div><div class="a3" id="func-easeInOutQuart" data-name="easeInOutQuart" data-func="cubic-bezier(0.76, 0, 0.24, 1)" data-maths="return x &lt; 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2;"><a class="a6 a9" href="#easeInOutQuart"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C95.000 85.000 30.000 0.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.76,0,.24,1)"></div></div></a><div class="a7">easeInOutQuart</div></div></div><div class="al"><div class="a3" id="func-easeInQuint" data-name="easeInQuint" data-func="cubic-bezier(0.64, 0, 0.78, 0)" data-maths="return x * x * x * x * x;"><a class="a6 a9" href="#easeInQuint"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C80.000 85.000 97.500 85.000 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.64,0,.78,0)"></div></div></a><div class="a7">easeInQuint</div></div><div class="a3" id="func-easeOutQuint" data-name="easeOutQuint" data-func="cubic-bezier(0.22, 1, 0.36, 1)" data-maths="return 1 - Math.pow(1 - x, 5);"><a class="a6 a9" href="#easeOutQuint"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C27.500 0.000 45.000 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(.22,1,.36,1)"></div></div></a><div class="a7">easeOutQuint</div></div><div class="a3" id="func-easeInOutQuint" data-name="easeInOutQuint" data-func="cubic-bezier(0.83, 0, 0.17, 1)" data-maths="return x &lt; 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2;"><a class="a6 a9" href="#easeInOutQuint"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C103.750 85.000 21.250 0.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.83,0,.17,1)"></div></div></a><div class="a7">easeInOutQuint</div></div></div><div class="al"><div class="a3" id="func-easeInExpo" data-name="easeInExpo" data-func="cubic-bezier(0.7, 0, 0.84, 0)" data-maths="return x === 0 ? 0 : Math.pow(2, 10 * x - 10);"><a class="a6 a9" href="#easeInExpo"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C87.500 85.000 105.000 85.000 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.7,0,.84,0)"></div></div></a><div class="a7">easeInExpo</div></div><div class="a3" id="func-easeOutExpo" data-name="easeOutExpo" data-func="cubic-bezier(0.16, 1, 0.3, 1)" data-maths="return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);"><a class="a6 a9" href="#easeOutExpo"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C20.000 0.000 37.500 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(.16,1,.3,1)"></div></div></a><div class="a7">easeOutExpo</div></div><div class="a3" id="func-easeInOutExpo" data-name="easeInOutExpo" data-func="cubic-bezier(0.87, 0, 0.13, 1)" data-maths="return x === 0
+  ? 0
+  : x === 1
+  ? 1
+  : x &lt; 0.5 ? Math.pow(2, 20 * x - 10) / 2
+  : (2 - Math.pow(2, -20 * x + 10)) / 2;"><a class="a6 a9" href="#easeInOutExpo"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C108.750 85.000 16.250 0.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.87,0,.13,1)"></div></div></a><div class="a7">easeInOutExpo</div></div></div><div class="al"><div class="a3" id="func-easeInCirc" data-name="easeInCirc" data-func="cubic-bezier(0.55, 0, 1, 0.45)" data-maths="return 1 - Math.sqrt(1 - Math.pow(x, 2));"><a class="a6 a9" href="#easeInCirc"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C68.750 85.000 125.000 46.750 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.55,0,1,.45)"></div></div></a><div class="a7">easeInCirc</div></div><div class="a3" id="func-easeOutCirc" data-name="easeOutCirc" data-func="cubic-bezier(0, 0.55, 0.45, 1)" data-maths="return Math.sqrt(1 - Math.pow(x - 1, 2));"><a class="a6 a9" href="#easeOutCirc"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C0.000 38.250 56.250 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(0,.55,.45,1)"></div></div></a><div class="a7">easeOutCirc</div></div><div class="a3" id="func-easeInOutCirc" data-name="easeInOutCirc" data-func="cubic-bezier(0.85, 0, 0.15, 1)" data-maths="return x &lt; 0.5
+  ? (1 - Math.sqrt(1 - Math.pow(2 * x, 2))) / 2
+  : (Math.sqrt(1 - Math.pow(-2 * x + 2, 2)) + 1) / 2;"><a class="a6 a9" href="#easeInOutCirc"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C106.250 85.000 18.750 0.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.85,0,.15,1)"></div></div></a><div class="a7">easeInOutCirc</div></div></div><div class="al"><div class="a3" id="func-easeInBack" data-name="easeInBack" data-func="cubic-bezier(0.36, 0, 0.66, -0.56)" data-maths="const c1 = 1.70158;
+const c3 = c1 + 1;
+
+return c3 * x * x * x - c1 * x * x;"><a class="a6 a9" href="#easeInBack"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C45.000 85.000 82.500 132.600 124 1" fill="none" stroke="url(#in)"></path></svg><div class="bi bj" style="transition-timing-function:cubic-bezier(.36,0,.66,-.56)"></div></div></a><div class="a7">easeInBack</div></div><div class="a3" id="func-easeOutBack" data-name="easeOutBack" data-func="cubic-bezier(0.34, 1.56, 0.64, 1)" data-maths="const c1 = 1.70158;
+const c3 = c1 + 1;
+
+return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);"><a class="a6 a9" href="#easeOutBack"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C42.500 -47.600 80.000 0.000 124 1" fill="none" stroke="url(#out)"></path></svg><div class="bi bk" style="transition-timing-function:cubic-bezier(.34,1.56,.64,1)"></div></div></a><div class="a7">easeOutBack</div></div><div class="a3" id="func-easeInOutBack" data-name="easeInOutBack" data-func="cubic-bezier(0.68, -0.6, 0.32, 1.6)" data-maths="const c1 = 1.70158;
+const c2 = c1 * 1.525;
+
+return x &lt; 0.5
+  ? (Math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
+  : (Math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2;"><a class="a6 a9" href="#easeInOutBack"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" d="M1 84C85.000 136.000 40.000 -51.000 124 1" fill="none" stroke="url(#inOut)"></path></svg><div class="bi bl" style="transition-timing-function:cubic-bezier(.68,-.6,.32,1.6)"></div></div></a><div class="a7">easeInOutBack</div></div></div><div class="al"><div class="a3" id="func-easeInElastic" data-name="easeInElastic" data-func="no" data-maths="const c4 = (2 * Math.PI) / 3;
+
+return x === 0
+  ? 0
+  : x === 1
+  ? 1
+  : -Math.pow(2, 10 * x - 10) * Math.sin((x * 10 - 10.75) * c4);" data-offset="bottom"><a class="a6 a9" href="#easeInElastic"><div class="a- ba"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" fill="none" stroke="url(#in)" d="M1 84 L1.24 84.03 2.48 84.01 3.72 83.99 4.96 83.97 6.20 83.94 7.44 83.92 8.68 83.89 9.92 83.87 11.16 83.85 12.40 83.84 13.64 83.83 14.88 83.83 16.12 83.84 17.36 83.86 18.60 83.88 19.84 83.92 21.08 83.97 22.32 84.03 23.56 84.09 24.80 84.16 26.04 84.24 27.28 84.30 28.52 84.37 29.76 84.42 31.00 84.46 32.24 84.49 33.48 84.49 34.72 84.46 35.96 84.41 37.20 84.33 38.44 84.22 39.68 84.08 40.92 83.92 42.16 83.73 43.40 83.54 44.64 83.33 45.88 83.14 47.12 82.96 48.36 82.80 49.60 82.69 50.84 82.62 52.08 82.62 53.32 82.69 54.56 82.84 55.80 83.07 57.04 83.39 58.28 83.78 59.52 84.24 60.76 84.76 62.00 85.31 63.24 85.88 64.48 86.44 65.72 86.95 66.96 87.39 68.20 87.71 69.44 87.89 70.68 87.90 71.92 87.70 73.16 87.28 74.40 86.62 75.64 85.74 76.88 84.63 78.12 83.32 79.36 81.86 80.60 80.29 81.84 78.68 83.08 77.10 84.32 75.65 85.56 74.42 86.80 73.50 88.04 72.99 89.28 72.98 90.52 73.54 91.76 74.73 93.00 76.58 94.24 79.08 95.48 82.22 96.72 85.91 97.96 90.05 99.20 94.50 100.44 99.06 101.68 103.52 102.92 107.62 104.16 111.10 105.40 113.70 106.64 115.13 107.88 115.17 109.12 113.58 110.36 110.22 111.60 105.00 112.84 97.91 114.08 89.04 115.32 78.60 116.56 66.87 117.80 54.30 119.04 41.40 120.28 28.80 121.52 17.20 122.76 7.34 "></path></svg><div class="bi bj"></div></div></a><div class="a7">easeInElastic</div></div><div class="a3" id="func-easeOutElastic" data-name="easeOutElastic" data-func="no" data-maths="const c4 = (2 * Math.PI) / 3;
+
+return x === 0
+  ? 0
+  : x === 1
+  ? 1
+  : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;" data-offset="top"><a class="a6 a9" href="#easeOutElastic"><div class="a- a_"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" fill="none" stroke="url(#out)" d="M1 84 L1.24 76.66 2.48 66.80 3.72 55.20 4.96 42.60 6.20 29.70 7.44 17.13 8.68 5.40 9.92 -5.04 11.16 -13.91 12.40 -21.00 13.64 -26.22 14.88 -29.58 16.12 -31.17 17.36 -31.13 18.60 -29.70 19.84 -27.10 21.08 -23.62 22.32 -19.52 23.56 -15.06 24.80 -10.50 26.04 -6.05 27.28 -1.91 28.52 1.78 29.76 4.92 31.00 7.42 32.24 9.27 33.48 10.46 34.72 11.02 35.96 11.01 37.20 10.50 38.44 9.58 39.68 8.35 40.92 6.90 42.16 5.32 43.40 3.71 44.64 2.14 45.88 0.68 47.12 -0.63 48.36 -1.74 49.60 -2.63 50.84 -3.28 52.08 -3.70 53.32 -3.90 54.56 -3.89 55.80 -3.71 57.04 -3.39 58.28 -2.95 59.52 -2.44 60.76 -1.88 62.00 -1.31 63.24 -0.76 64.48 -0.24 65.72 0.22 66.96 0.61 68.20 0.93 69.44 1.16 70.68 1.31 71.92 1.38 73.16 1.38 74.40 1.31 75.64 1.20 76.88 1.04 78.12 0.86 79.36 0.67 80.60 0.46 81.84 0.27 83.08 0.08 84.32 -0.08 85.56 -0.22 86.80 -0.33 88.04 -0.41 89.28 -0.46 90.52 -0.49 91.76 -0.49 93.00 -0.46 94.24 -0.42 95.48 -0.37 96.72 -0.30 97.96 -0.24 99.20 -0.16 100.44 -0.09 101.68 -0.03 102.92 0.03 104.16 0.08 105.40 0.12 106.64 0.14 107.88 0.16 109.12 0.17 110.36 0.17 111.60 0.16 112.84 0.15 114.08 0.13 115.32 0.11 116.56 0.08 117.80 0.06 119.04 0.03 120.28 0.01 121.52 -0.01 122.76 -0.03 "></path></svg><div class="bi bk"></div></div></a><div class="a7">easeOutElastic</div></div><div class="a3" id="func-easeInOutElastic" data-name="easeInOutElastic" data-func="no" data-maths="const c5 = (2 * Math.PI) / 4.5;
+
+return x === 0
+  ? 0
+  : x === 1
+  ? 1
+  : x &lt; 0.5
+  ? -(Math.pow(2, 20 * x - 10) * Math.sin((20 * x - 11.125) * c5)) / 2
+  : (Math.pow(2, -20 * x + 10) * Math.sin((20 * x - 11.125) * c5)) / 2 + 1;"><a class="a6 a9" href="#easeInOutElastic"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" fill="none" stroke="url(#inOut)" d="M1 84 L1.24 83.98 2.48 83.96 3.72 83.95 4.96 83.93 6.20 83.92 7.44 83.91 8.68 83.91 9.92 83.92 11.16 83.94 12.40 83.97 13.64 84.02 14.88 84.08 16.12 84.15 17.36 84.23 18.60 84.31 19.84 84.38 21.08 84.42 22.32 84.44 23.56 84.41 24.80 84.33 26.04 84.18 27.28 83.97 28.52 83.69 29.76 83.36 31.00 82.99 32.24 82.62 33.48 82.29 34.72 82.03 35.96 81.91 37.20 81.99 38.44 82.31 39.68 82.93 40.92 83.86 42.16 85.11 43.40 86.63 44.64 88.34 45.88 90.12 47.12 91.78 48.36 93.12 49.60 93.87 50.84 93.76 52.08 92.53 53.32 89.96 54.56 85.91 55.80 80.35 57.04 73.43 58.28 65.46 59.52 57.01 60.76 48.85 62.00 42.00 63.24 35.15 64.48 26.99 65.72 18.54 66.96 10.57 68.20 3.65 69.44 -1.91 70.68 -5.96 71.92 -8.53 73.16 -9.76 74.40 -9.87 75.64 -9.12 76.88 -7.78 78.12 -6.12 79.36 -4.34 80.60 -2.62 81.84 -1.11 83.08 0.14 84.32 1.07 85.56 1.69 86.80 2.01 88.04 2.09 89.28 1.97 90.52 1.71 91.76 1.38 93.00 1.01 94.24 0.64 95.48 0.31 96.72 0.03 97.96 -0.18 99.20 -0.33 100.44 -0.41 101.68 -0.44 102.92 -0.42 104.16 -0.38 105.40 -0.31 106.64 -0.23 107.88 -0.15 109.12 -0.08 110.36 -0.02 111.60 0.03 112.84 0.06 114.08 0.08 115.32 0.09 116.56 0.09 117.80 0.08 119.04 0.07 120.28 0.05 121.52 0.04 122.76 0.02 "></path></svg><div class="bi bl"></div></div></a><div class="a7">easeInOutElastic</div></div></div><div class="al"><div class="a3" id="func-easeInBounce" data-name="easeInBounce" data-func="no" data-maths="return 1 - easeOutBounce(1 - x);"><a class="a6 a9" href="#easeInBounce"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" fill="none" stroke="url(#in)" d="M1 84 L1.24 83.49 2.48 83.10 3.72 82.84 4.96 82.71 6.20 82.70 7.44 82.82 8.68 83.07 9.92 83.45 11.16 83.95 12.40 83.00 13.64 82.03 14.88 81.18 16.12 80.46 17.36 79.86 18.60 79.39 19.84 79.05 21.08 78.84 22.32 78.75 23.56 78.79 24.80 78.96 26.04 79.25 27.28 79.68 28.52 80.22 29.76 80.90 31.00 81.70 32.24 82.63 33.48 83.69 34.72 82.35 35.96 80.20 37.20 78.17 38.44 76.27 39.68 74.50 40.92 72.85 42.16 71.33 43.40 69.94 44.64 68.68 45.88 67.54 47.12 66.53 48.36 65.65 49.60 64.89 50.84 64.26 52.08 63.76 53.32 63.38 54.56 63.13 55.80 63.01 57.04 63.02 58.28 63.15 59.52 63.41 60.76 63.80 62.00 64.31 63.24 64.95 64.48 65.72 65.72 66.62 66.96 67.64 68.20 68.79 69.44 70.06 70.68 71.47 71.92 73.00 73.16 74.66 74.40 76.44 75.64 78.35 76.88 80.39 78.12 82.56 79.36 82.33 80.60 77.82 81.84 73.43 83.08 69.18 84.32 65.05 85.56 61.05 86.80 57.17 88.04 53.42 89.28 49.80 90.52 46.31 91.76 42.94 93.00 39.70 94.24 36.59 95.48 33.60 96.72 30.75 97.96 28.01 99.20 25.41 100.44 22.93 101.68 20.58 102.92 18.36 104.16 16.26 105.40 14.29 106.64 12.45 107.88 10.74 109.12 9.15 110.36 7.69 111.60 6.35 112.84 5.15 114.08 4.07 115.32 3.11 116.56 2.29 117.80 1.59 119.04 1.02 120.28 0.57 121.52 0.25 122.76 0.06 "></path></svg><div class="bi bj"></div></div></a><div class="a7">easeInBounce</div></div><div class="a3" id="func-easeOutBounce" data-name="easeOutBounce" data-func="no" data-maths="const n1 = 7.5625;
+const d1 = 2.75;
+
+if (x &lt; 1 / d1) {
+    return n1 * x * x;
+} else if (x &lt; 2 / d1) {
+    return n1 * (x -= 1.5 / d1) * x + 0.75;
+} else if (x &lt; 2.5 / d1) {
+    return n1 * (x -= 2.25 / d1) * x + 0.9375;
+} else {
+    return n1 * (x -= 2.625 / d1) * x + 0.984375;
+}"><a class="a6 a9" href="#easeOutBounce"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" fill="none" stroke="url(#out)" d="M1 84 L1.24 83.94 2.48 83.75 3.72 83.43 4.96 82.98 6.20 82.41 7.44 81.71 8.68 80.89 9.92 79.93 11.16 78.85 12.40 77.65 13.64 76.31 14.88 74.85 16.12 73.26 17.36 71.55 18.60 69.71 19.84 67.74 21.08 65.64 22.32 63.42 23.56 61.07 24.80 58.59 26.04 55.99 27.28 53.25 28.52 50.40 29.76 47.41 31.00 44.30 32.24 41.06 33.48 37.69 34.72 34.20 35.96 30.58 37.20 26.83 38.44 22.95 39.68 18.95 40.92 14.82 42.16 10.57 43.40 6.18 44.64 1.67 45.88 1.44 47.12 3.61 48.36 5.65 49.60 7.56 50.84 9.34 52.08 11.00 53.32 12.53 54.56 13.94 55.80 15.21 57.04 16.36 58.28 17.38 59.52 18.28 60.76 19.05 62.00 19.69 63.24 20.20 64.48 20.59 65.72 20.85 66.96 20.98 68.20 20.99 69.44 20.87 70.68 20.62 71.92 20.24 73.16 19.74 74.40 19.11 75.64 18.35 76.88 17.47 78.12 16.46 79.36 15.32 80.60 14.06 81.84 12.67 83.08 11.15 84.32 9.50 85.56 7.73 86.80 5.83 88.04 3.80 89.28 1.65 90.52 0.31 91.76 1.37 93.00 2.30 94.24 3.10 95.48 3.78 96.72 4.32 97.96 4.75 99.20 5.04 100.44 5.21 101.68 5.25 102.92 5.16 104.16 4.95 105.40 4.61 106.64 4.14 107.88 3.54 109.12 2.82 110.36 1.97 111.60 1.00 112.84 0.05 114.08 0.55 115.32 0.93 116.56 1.18 117.80 1.30 119.04 1.29 120.28 1.16 121.52 0.90 122.76 0.51 "></path></svg><div class="bi bk"></div></div></a><div class="a7">easeOutBounce</div></div><div class="a3" id="func-easeInOutBounce" data-name="easeInOutBounce" data-func="no" data-maths="return x &lt; 0.5
+  ? (1 - easeOutBounce(1 - 2 * x)) / 2
+  : (1 + easeOutBounce(2 * x - 1)) / 2;"><a class="a6 a9" href="#easeInOutBounce"><div class="a-"><svg class="bb" viewBox="0 0 125 85" xmlns="http://www.w3.org/2000/svg"><g class="bc"><path class="bf" d="M1 0V84H125" fill="none"></path><text class="bg" x="4" y="8">x</text><text class="bg" x="122" y="80" text-anchor="end">t</text></g><path class="bh" fill="none" stroke="url(#inOut)" d="M1 84 L1.24 83.55 2.48 83.35 3.72 83.41 4.96 83.72 6.20 83.50 7.44 82.59 8.68 81.93 9.92 81.53 11.16 81.38 12.40 81.48 13.64 81.84 14.88 82.45 16.12 83.32 17.36 83.18 18.60 81.09 19.84 79.25 21.08 77.67 22.32 76.34 23.56 75.27 24.80 74.44 26.04 73.88 27.28 73.57 28.52 73.51 29.76 73.71 31.00 74.16 32.24 74.86 33.48 75.82 34.72 77.03 35.96 78.50 37.20 80.22 38.44 82.20 39.68 83.16 40.92 78.72 42.16 74.52 43.40 70.59 44.64 66.90 45.88 63.47 47.12 60.30 48.36 57.37 49.60 54.70 50.84 52.29 52.08 50.13 53.32 48.23 54.56 46.57 55.80 45.18 57.04 44.03 58.28 43.14 59.52 42.51 60.76 42.13 62.00 42.00 63.24 41.87 64.48 41.49 65.72 40.86 66.96 39.97 68.20 38.82 69.44 37.43 70.68 35.77 71.92 33.87 73.16 31.71 74.40 29.29 75.64 26.63 76.88 23.70 78.12 20.53 79.36 17.10 80.60 13.41 81.84 9.48 83.08 5.28 84.32 0.84 85.56 1.80 86.80 3.78 88.04 5.50 89.28 6.97 90.52 8.18 91.76 9.14 93.00 9.84 94.24 10.29 95.48 10.49 96.72 10.43 97.96 10.12 99.20 9.55 100.44 8.73 101.68 7.66 102.92 6.33 104.16 4.75 105.40 2.91 106.64 0.82 107.88 0.68 109.12 1.55 110.36 2.16 111.60 2.52 112.84 2.62 114.08 2.47 115.32 2.07 116.56 1.41 117.80 0.50 119.04 0.28 120.28 0.59 121.52 0.65 122.76 0.45 "></path></svg><div class="bi bl"></div></div></a><div class="a7">easeInOutBounce</div></div></div></div></div><section class="am"><div class="ao"><a class="r s" href="#"><span class="t"><svg class="u v ap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24"><path d="M14,3.8L12.2,2L2,12l10.2,10l1.8-1.8L5.6,12L14,3.8z"></path></svg></span> Toate relaxările</a></div><div class="aq"><div class="as"><h2 class="at a"></h2><div class="au"><div class="aw"><svg class="ax" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 85"><path d="M0 0L0 0z"></path></svg><div class="ay">x</div><div class="ay az">t</div><button class="a0" aria-hidden="true"></button><div class="a1"></div></div></div><div class="bm"><div class="bn">CSS</div><div class="c"><div>În CSS, proprietățile de tranziție și animație vă permit să specificați o funcție de relaxare.</div><div class="bo"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><pre><span class="l">.block</span> {
+	<span class="l">transition</span>: transform 0.6s <span class="k b"></span>;
+}</pre></div></div></div><div>Editați pe <a href="http://cubic-bezier.com/" rel="noopener noreferrer" target="_blank" class="g">cubic-bezier.com</a>.</div></div><div class="e"><div>În CSS, această funcție poate fi implementată folosind <code>@keyframes</code>:</div><details class="b-"><summary class="b_">Dimensiune</summary><div class="ca"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><div class="cb" data-type="scale">Se încarcă...</div></div></div></div></details><details class="b-"><summary class="b_">Poziție</summary><div class="ca"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><div class="cb" data-type="translate">Se încarcă...</div></div></div></div></details><details class="b-"><summary class="b_">Transparență</summary><div class="ca"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><div class="cb" data-type="opacity">Se încarcă...</div></div></div></div></details></div></div><div class="bm"><div class="bn">PostCSS</div><div class="c"><div>În PostCSS, funcția de relaxare este mult mai ușor de descris. Există un plugin <a href="https://github.com/postcss/postcss-easings" rel="noopener noreferrer" target="_blank">postcss-easings</a> care preia informațiile de tranziție de pe acel site.</div><div class="bo"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><pre><span class="l">.block</span> {
+	<span class="l">transition</span>: transform 0.6s <span class="k a"></span>;
+}</pre></div></div></div><div>Acea declarație este abordată în descrierea de mai sus.</div></div><div class="e"><div>Din păcate, funcția de relaxare nu poate fi setată cu niciun plugin PostCSS. Se poate face cu <code>@keyframes</code>, vezi mai sus.</div></div></div><div class="bm c"><div class="bn">Gradient</div><div>Este posibil să desenați un gradient folosind <a href="https://github.com/larsenwork/postcss-easing-gradients" rel="noopener noreferrer" target="_blank">postcss-easing-gradients</a>.</div><div class="bo"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><pre><span class="l">.block</span> {
+	<span class="l">background</span>: linear-gradient(
+		to bottom,
+		#1473e6,
+		<span class="k b"></span>,
+		#247b5e
+	);
+}</pre></div></div></div><div class="bp"></div></div><div class="bm"><div class="bn">Funcția matematică</div><div class="c"><div>Mai jos vedeți codul acestei funcții de simplificare scris în TypeScript. Variabila x reprezintă progresul absolut al animației în limitele lui 0 (începutul animației) și 1 (sfârșitul animației).</div><div class="bo"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><pre><span class="l">function <span class="k a"></span></span>(x: number): number {
+<div class="a8 f"></div>
+}</pre></div></div></div></div><div class="e"><div>Mai jos vedeți codul acestei funcții de simplificare scris în TypeScript. Variabila x reprezintă progresul absolut al animației în limitele lui 0 (începutul animației) și 1 (sfârșitul animației).</div><div class="bo"><div class="bq"><button class="br r s"><svg class="bs h" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#copy"></use></svg><svg class="bs bt bu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#done"></use></svg></button><div class="bv"><pre><span class="l">function <span class="k a"></span></span>(x: number): number {
+<div class="a8 f"></div>
+}</pre></div></div></div></div></div></div><div class="ar"><div class="bx">Verificați relaxarea pentru modificări:</div><div class="by"><button class="r s bz" data-type="scale">Mărimi</button><button class="r s bz" data-type="translate">Poziții</button><button class="r s bz" data-type="opacity">Transparente</button></div><div class="b0"><div class="b1"><div class="b2">Această funcție:</div><div class="b3"><img class="b4" src="card.7e7353a0.jpg" alt=""><div class="b5" data-target="true">Această funcție</div></div></div><div class="b1"><div class="b2">Funcție liniară:</div><div class="b3"><img class="b4" src="card.7e7353a0.jpg" alt=""><div class="b5" data-target="false">Funcție liniară</div></div></div></div></div></div></section></div></div><div class="cc" hidden></div></div><script src="https://auth.dataviz.jp/lib/supabase.js"></script><script src="https://auth.dataviz.jp/lib/dataviz-auth-client.js"></script><script src="src.8f4d647d.js" async></script><link href="keyframes.db84c59e.css" rel="stylesheet"><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("./sw.ro.js").then(()=>navigator.serviceWorker.ready).then(r=>r.sync.register("syncdata")).catch(r=>console.log(r));</script></body></html>
