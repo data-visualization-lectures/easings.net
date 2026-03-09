@@ -30,7 +30,7 @@ const langList = fs
 	.map((file) => yamlParse.load(file))
 	.filter((dic) => dic.version && dic.version > 1 && dic.lang_name);
 
-const DEFAULT_LANG_CODE = process.env.DEFAULT_LANG_CODE || "ja";
+const DEFAULT_LANG_CODE = process.env.DEFAULT_LANG_CODE || "en";
 
 const addedSelectors = [
 	"js-info-name",
@@ -276,10 +276,11 @@ function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 				const defaultLang =
 					langList.find((lang) => lang.lang_code === DEFAULT_LANG_CODE) ||
 					langList.find((lang) => lang.lang_code === "en");
+				const indexLang = Object.assign({}, defaultLang, { lang_code: "" });
 				const htmlFragment = Mustache.render(
 					html,
 					format(
-						defaultLang,
+						indexLang,
 						langList.map((dic) => ({
 							code: dic.lang_code,
 							name: dic.lang_name,

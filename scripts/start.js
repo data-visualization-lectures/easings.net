@@ -48,7 +48,13 @@ function renderIndexPage(req, res, next) {
 		req.path === "/" ||
 		(req.params.lang && req.params.lang.match(/^[a-zA-Z]{2}$/))
 	) {
-		const lang = req.params.lang;
+		let lang = req.params.lang;
+
+		if (!lang) {
+			const acceptLang = req.headers["accept-language"] || "";
+			const primaryLang = acceptLang.split(",")[0].toLowerCase().replace(/-\w+$/, "");
+			lang = primaryLang === "ja" ? "ja" : "en";
+		}
 
 		bundler.bundle().then((data) => {
 			let indexHtml = "";

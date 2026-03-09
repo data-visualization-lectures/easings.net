@@ -23,7 +23,7 @@ function format(dictionary, langList) {
 			].join("")
 		),
 		redirect_script: !dictionary.lang_code
-			? renderRedirectScript(langList.map((item) => item.code))
+			? renderRedirectScript()
 			: "",
 
 		service_worker:
@@ -98,32 +98,16 @@ function renderLink() {
 	};
 }
 
-function renderRedirectScript(langList) {
+function renderRedirectScript() {
 	return `
 		<script>
 			(function () {
-				var translations = ${JSON.stringify(langList)};
-
 				var system = navigator.userLanguage || navigator.language;
-				var dialect = system.toLowerCase();
-				var language = dialect.replace(/-\\w+$/, "");
+				var language = system.toLowerCase().replace(/-\\w+$/, "");
 
-				if (language === "no") {
-					language = "nb";
-				} else if (language === "zh") {
-					language = "zh-cn";
+				if (language === "ja") {
+					location.replace("/ja");
 				}
-
-				function find(user) {
-					for (var i = 0; i < translations.length; i++) {
-						if (user === translations[i]) {
-							location.replace('/' + translations[i])
-						}
-					}
-				}
-
-				find(dialect);
-				find(language);
 			})();
 		</script>
 	`;
