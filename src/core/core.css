@@ -15,6 +15,7 @@ body {
 	box-sizing: border-box;
 	background: var(--main-background);
 	margin: 0;
+	padding-top: 48px; /* dataviz-header (position: fixed, height: 48px) */
 }
 
 a {
