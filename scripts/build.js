@@ -231,7 +231,7 @@ function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 	const manifest = bundleAssets.find((asset) => asset.type === "webmanifest");
 	const manifestFile = await readFile(manifest.name, "utf8");
 
-	await bundleAssets
+	await Promise.all(bundleAssets
 		.filter((i) => i.type === "html")
 		.map(async (item) => {
 			const file = await readFile(item.name);
@@ -240,7 +240,7 @@ function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 			if (/\/index\.html$/i.test(item.name)) {
 				const distDirName = path.dirname(item.name);
 
-				await langList.map(async (lang) => {
+				await Promise.all(langList.map(async (lang) => {
 					const viewData = format(
 						lang,
 						langList.map((dic) => ({
@@ -271,7 +271,7 @@ function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 						path.join(distDirName, `${lang.lang_code}.html`),
 						htmlMinFragment.html.replace(/>\s</g, "><")
 					);
-				});
+				}));
 
 				const defaultLang =
 					langList.find((lang) => lang.lang_code === DEFAULT_LANG_CODE) ||
@@ -297,7 +297,7 @@ function htmlPlugin(lang = DEFAULT_LANG_CODE) {
 					PostHTML([]).use(htmlPlugin()).process(file, { sync: true }).html
 				);
 			}
-		});
+		}));
 }
 
 build().catch((error) => {
